@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+    api:
+        build:
+            context: ./api
+            dockerfile: Dockerfile
+        image: api
+        ports:
+            - "8008:8008"
+        volumes:
+            - ./api/app:/home/app

@@ -1,0 +1,8 @@
+beautifulsoup4
+python-dateutil
+requests
+pymongo
+lxml
+pytz
+grequests
+asyncio
