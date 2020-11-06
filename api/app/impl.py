@@ -179,7 +179,7 @@ def refine_auction(response, *args, **kwargs):
          'url':f'http://itempage3.auction.co.kr/DetailView.aspx?itemno={each["viewModel"]["itemNo"]}'} for each in flat_list]}
 
 
-def auction_products(query, page=1):
+def auction_products(query, page='1'):
     url = AUCTION_SEARCH_URL
     params = {
         "keyword": query,
