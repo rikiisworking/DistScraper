@@ -1,11 +1,10 @@
 from typing import Optional
-from fastapi import FastAPI, Body, Request, Response
 from pydantic import BaseModel
 from fastapi.responses import PlainTextResponse
 from fastapi.middleware.cors import CORSMiddleware
 from time import time
 import impl
-
+from fastapi import FastAPI, Body, Request, Response
 
 app = FastAPI(
     title="vendor product lookup",
@@ -48,7 +47,7 @@ async def get_coupang_products(
         page: Optional[str] = '1'
 ):
     print(f"getting products in coupang for query {query}")
-    return await impl.coupang_products(query=query, sort=sort, page=page)
+    return impl.coupang_products(query=query, sort=sort, page=page)
 
 
 @app.get("/getCoupangProductsRaw", tags=["raw"], response_class=PlainTextResponse)
@@ -66,7 +65,7 @@ async def get_gmarket_products(
         page: Optional[str] = '1'
 ):
     print(f"getting products in gmarket for query {query}")
-    return await impl.gmarket_products(query=query, sort=sort, page=page)
+    return impl.gmarket_products(query=query, sort=sort, page=page)
 
 
 @app.get("/getGmarketProductsRaw", tags=["raw"], response_class=PlainTextResponse)
@@ -77,7 +76,7 @@ async def get_gmarket_products_raw(query: str, page: Optional[str] = '1'):
 @app.get("/getElevenStreetProducts", tags=["funcs"])
 async def get_eleven_street_products(query: str, page: Optional[str] = '1'):
     print(f'getting products in 11st for query {query}')
-    return await impl.elevenStreet_products(query=query, page=page)
+    return impl.elevenStreet_products(query=query, page=page)
 
 
 @app.get("/getElevenStreetProductsRaw", response_class=PlainTextResponse, tags=["raw"])
@@ -88,7 +87,7 @@ async def get_eleven_street_products_raw(query: str, page: Optional[str] = '1'):
 @app.get("/getInterparkProducts", tags=["funcs"])
 async def get_interpark_products(query: str, page: Optional[str] = '1'):
     print(f'getting products in interpark for query {query}')
-    return await impl.interpark_products(query=query, page=page)
+    return impl.interpark_products(query=query, page=page)
 
 
 @app.get("/getInterparkProductsRaw", response_class=PlainTextResponse, tags=["raw"])
@@ -99,7 +98,7 @@ async def get_interpark_products_raw(query: str, page: Optional[str] = '1'):
 @app.get("/getAuctionProducts", tags=["funcs"])
 async def get_auction_products(query: str, page: Optional[str] = '1'):
     print(f"getting products in auction for query {query}")
-    return await impl.auction_products(query=query, page=page)
+    return impl.auction_products(query=query, page=page)
 
 
 @app.get("/getAuctionProductsRaw", response_class=PlainTextResponse, tags=["raw"])
@@ -110,7 +109,7 @@ async def get_auction_products_raw(query: str, page: Optional[str] = '1'):
 @app.get("/getWemakepriceProducts", tags=["funcs"])
 async def get_we_make_price_products(query: str, page: Optional[str] = '1'):
     print(f"getting products in wemakeprice for query {query}")
-    return await impl.weMakePrice_products(query=query, page=page)
+    return impl.weMakePrice_products(query=query, page=page)
 
 
 @app.get("/getWemakepriceProductsRaw", response_class=PlainTextResponse, tags=["raw"])
@@ -121,7 +120,7 @@ async def get_we_make_price_products_raw(query: str, page: Optional[str] = '1'):
 @app.get("/getTmonProducts", tags=["funcs"])
 async def get_tmon_products(query: str, page: Optional[str] = '1'):
     print(f'getting products in tmon for query {query}')
-    return await impl.tmon_products(query=query, page=page)
+    return impl.tmon_products(query=query, page=page)
 
 
 @app.get("/getTmonProductsRaw", response_class=PlainTextResponse, tags=["raw"])
@@ -131,4 +130,4 @@ async def get_tmon_products_raw(query: str, page: Optional[str] = '1'):
 
 @app.get("/getAllVendorProducts", tags=["funcs"])
 async def get_all_vendors(query:str, page:Optional[str]='1'):
-    return await impl.all_products(query=query, page=page)
+    return impl.all_products(query=query, page=page)

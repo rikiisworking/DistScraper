@@ -9,4 +9,4 @@ LABEL maintainer="Rikkki_"
 COPY requirements.txt . 
 RUN pip install -r requirements.txt
 WORKDIR /home/app
-CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8008"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8008"]
